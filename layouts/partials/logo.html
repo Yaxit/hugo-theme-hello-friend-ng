@@ -5,7 +5,11 @@
         {{ else }}
             <span class="logo__mark">{{ with .Site.Params.Logo.logoMark }}{{ . }}{{ else }}>{{ end }}</span>
             <span class="logo__text {{ with.Site.Params.Logo.logoCursorPathname}}logo__pathname{{ end }}">
+            {{ if in .Page.RelPermalink "posts/" }}
+                /home{{ with .Page.RelPermalink }}{{ . | replaceRE "/[0-9]{4}/[0-9]{2}/" "/" }}{{ else }}hello{{ end }}$ cd</span>
+            {{ else }}
                 /home{{ with .Page.RelPermalink }}{{ . }}{{ else }}hello{{ end }}$ cd</span>
+            {{ end }}
             <span class="logo__cursor" style=
                   "{{ with.Site.Params.Logo.logoCursorDisabled }}visibility:hidden;{{ end }}
                    {{ with.Site.Params.Logo.logoCursorColor    }}background-color:{{ . }};{{ end }}
